@@ -9,7 +9,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>Clean Blog - Start Bootstrap Theme</title>
+    <title>Kerin's Blog</title>
 
     <!-- Bootstrap core CSS -->
     <link
@@ -46,7 +46,7 @@
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
         <a class="navbar-brand" href="{{url_for('get_all_posts')}}"
-          >Start Bootstrap</a
+          >Kerin's Blog</a
         >
         <button
           class="navbar-toggler navbar-toggler-right"
@@ -63,13 +63,25 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="/">Home</a>
+              <a class="nav-link" href="{{ url_for('get_all_posts') }}">Home</a>
+            </li>
+            {% if not logged_in: %}
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('login') }}">Login</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/about">About</a>
+              <a class="nav-link" href="{{ url_for('register') }}">Register</a>
+            </li>
+            {%endif%} {%if logged_in%}
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('logout') }}">Log Out</a>
+            </li>
+            {%endif%}
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('about') }}">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/contact">Contact</a>
+              <a class="nav-link" href="{{ url_for('contact') }}">Contact</a>
             </li>
           </ul>
         </div>
